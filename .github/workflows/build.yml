@@ -6,17 +6,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-
-      - name: Buildozer Action
+      - name: Build APK
         uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
         with:
-          workdir:.
           command: buildozer android debug
+          workdir:.
           buildozer_version: stable
-
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: TradeGuard-APK
-          path:./bin/*.apk
+          path: bin/*.apk
